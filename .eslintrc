@@ -1,0 +1,8 @@
+{
+  "extends": "airbnb/base",
+  "rules": {
+    // Override any settings from the "parent" configuration
+    "comma-dangle": 0,
+    "no-useless-constructor": 0
+  }
+}
