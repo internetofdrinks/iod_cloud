@@ -2,6 +2,7 @@
 const hapi = require('hapi');
 const logger = require('./utils/logger');
 
+// PORT = Heroku Port
 const SERVER_PORT = process.env.PORT || 3000;
 const server = new hapi.Server();
 
