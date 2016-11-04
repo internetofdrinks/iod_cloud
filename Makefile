@@ -18,7 +18,7 @@ JS_SRC = $(SRC)/javascripts
 JS_DIST = $(DIST)/javascripts
 
 BROWSERIFY_TARGET_FLAGS = \
-	-t [ babelify ] \
+	-t [ babelify --presets [ es2015 react ] ] \
 	-t [ envify --NODE_ENV $(ENV) ]
 
 BROWSERIFY_LIBS = \

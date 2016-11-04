@@ -1,8 +1,21 @@
 {
   "extends": "airbnb/base",
+  "env": {
+    "browser": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "rules": {
     // Override any settings from the "parent" configuration
     "comma-dangle": 0,
-    "no-useless-constructor": 0
+    "no-useless-constructor": 0,
+    "no-alert": 0,
+    "no-console": 0
   }
 }

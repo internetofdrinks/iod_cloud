@@ -1,0 +1,39 @@
+// Origin: https://google.github.io/material-design-icons
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  cursor: default;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+
+  // Safari thinks all icons have to be like 2000px wide :/
+  max-width: 24px;
+
+  &.material-icons--small {
+    font-size: 18px;
+    max-width: 18px;
+  }
+
+  &.material-icons--smaller {
+    font-size: 14px;
+    max-width: 14px;
+  }
+}
