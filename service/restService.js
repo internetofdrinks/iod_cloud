@@ -2,7 +2,7 @@
 const hapi = require('hapi');
 const logger = require('./utils/logger');
 
-const SERVER_PORT = process.env.REST_PORT || 3000;
+const SERVER_PORT = process.env.PORT || 3000;
 const server = new hapi.Server();
 
 class RESTService {
