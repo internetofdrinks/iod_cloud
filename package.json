@@ -27,6 +27,7 @@
     "jquery": "^3.1.1",
     "lodash": "^4.16.6",
     "material-design-lite": "^1.2.1",
+    "mongoose": "^4.6.6",
     "node-sass": "^3.11.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
