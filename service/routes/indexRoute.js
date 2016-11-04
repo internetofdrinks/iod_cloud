@@ -1,25 +1,17 @@
-'use strict';
 const Route = require('./route');
 const logger = require('../utils/logger');
 
-const REST_METHOD = 'POST';
-const REST_PATH = '/foo';
-const config = {
-  payload: {
-    output: 'stream',
-    parse: true,
-    allow: 'multipart/form-data'
-  }
-};
+const REST_METHOD = 'GET';
+const REST_PATH = '/';
 
 const routeHandler = (request, reply) => {
-  reply('test worked fine - time for some beer! :)');
+  reply.file("frontend/index.html");
 };
 
 class IndexRoute extends Route {
   constructor() {
-    super(REST_METHOD, REST_PATH, routeHandler, config);
+    super(REST_METHOD, REST_PATH, routeHandler, {});
   }
 }
 
-module.exports = new TestRoute();
+module.exports = new IndexRoute();
