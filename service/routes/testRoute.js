@@ -1,5 +1,5 @@
 'use strict';
-const Route = require('./Route');
+const Route = require('./route');
 const logger = require('../utils/logger');
 
 const REST_METHOD = 'GET';
