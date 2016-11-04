@@ -12,9 +12,13 @@ class MongoDBUtils {
     return mongoose.model(this.collection, model);
   }
   
+  createPayloadJSON(payload){
+    return JSON.parse(payload.toString());
+  }
+  
   save(item) {
     mongoose.connect(URI);
-    console.log('Connected TO: ' + URI);
+    console.log('Connected to: ' + URI);
     return new Promise((resolve, reject) => {
       item.save(function (err) {
         if (err) {
@@ -24,7 +28,6 @@ class MongoDBUtils {
         }
       });
     });
-    
   }
 }
 
