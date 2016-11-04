@@ -22,6 +22,7 @@ BROWSERIFY_TARGET_FLAGS = \
 	-t [ envify --NODE_ENV $(ENV) ]
 
 BROWSERIFY_LIBS = \
+    material-design-lite \
 	babel-polyfill \
 	jquery \
 	lodash \
