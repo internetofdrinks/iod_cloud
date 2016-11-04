@@ -10,19 +10,17 @@
   "engines": {
     "node": "7.0.0",
     "npm": "4.0.2"
+  },
+  "author": "IOD TEAM",
+  "license": "MIT",
+  "dependencies": {
+    "hapi": "^15.2.0",
+    "winston": "^2.1.1"
+  },
+  "devDependencies": {
+    "del": "^2.2.0",
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-react": "^6.x"
   }
-},
-
-"author": "IOD TEAM",
-"license": "MIT",
-"dependencies": {
-"hapi": "^15.2.0",
-"winston": "^2.1.1"
-},
-"devDependencies": {
-"del": "^2.2.0",
-"eslint": "^3.9.1",
-"eslint-config-airbnb": "^12.0.0",
-"eslint-plugin-react": "^6.x"
-}
 }
