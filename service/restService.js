@@ -10,6 +10,7 @@ class RESTService {
 
   constructor(routes) {
     server.connection({ port: SERVER_PORT });
+    console.log('SERVER_PORT: '+SERVER_PORT)
     logger.info(`Successfully connected to port: ${SERVER_PORT}`);
     for (const route of routes) {
       server.route(route);
