@@ -4,7 +4,7 @@
     "browser": true
   },
   "plugins": [
-    "react"
+    "react", "jsx"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -16,6 +16,10 @@
     "comma-dangle": 0,
     "no-useless-constructor": 0,
     "no-alert": 0,
-    "no-console": 0
+    "no-console": 0,
+    "jsx/uses-factory": [1, {"pragma": "JSX"}],
+    "jsx/factory-in-scope": [0, {"pragma": "JSX"}],
+    "jsx/mark-used-vars": 1,
+    "jsx/no-undef": 1
   }
 }
