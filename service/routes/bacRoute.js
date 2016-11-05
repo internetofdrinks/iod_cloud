@@ -10,6 +10,11 @@ const DB_MODEL = {
   baclevel: Number,
   date: Date
 };
+const options = {
+  payload: {
+    parse: true
+  }
+}
 
 const routeHandler = (request, reply) => {
   logger.debug(request.payload);
@@ -27,7 +32,7 @@ const routeHandler = (request, reply) => {
 
 class BACRoute extends Route {
   constructor() {
-    super(REST_METHOD, REST_PATH, routeHandler, {});
+    super(REST_METHOD, REST_PATH, routeHandler, options);
   }
 }
 
