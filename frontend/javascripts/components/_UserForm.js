@@ -19,7 +19,7 @@ export default class UserForm extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      user: _.clone(this.props.user)
+      user: _.clone(nextProps.user)
     });
   }
 
