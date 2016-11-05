@@ -5,26 +5,25 @@ const MongoDBUtils = require('../utils/mongodbutils');
 const REST_METHOD = 'POST';
 const REST_PATH = '/bac';
 const DB_COLLECTION = 'bac';
-const DB_MODEL = {
+const mongoDBUtils = new MongoDBUtils(DB_COLLECTION);
+const BloodLevelEntry = mongoDBUtils.createModel({
   userid: String,
   baclevel: Number,
   date: Date
-};
+});
 const options = {
   payload: {
     parse: true
   }
-}
+};
 
 const routeHandler = (request, reply) => {
   logger.debug(request.payload);
   logger.debug(JSON.stringify(request.payload));
   const payloadJSON = MongoDBUtils.createPayloadJSON(request.payload);
-  const mongodbUtils = new MongoDBUtils(DB_COLLECTION);
   payloadJSON.date = Date.now();
   logger.debug(payloadJSON);
-  const BloodLevelEntry = mongodbUtils.createModel(DB_MODEL);
-  mongodbUtils.save(new BloodLevelEntry(payloadJSON)).then(() => {
+  mongoDBUtils.save(new BloodLevelEntry(payloadJSON)).then(() => {
     reply().code(201);
   }, (err) => {
     reply(err).code(500);
