@@ -18,11 +18,8 @@ const options = {
 };
 
 const routeHandler = (request, reply) => {
-  logger.debug(request.payload);
-  logger.debug(JSON.stringify(request.payload));
   const payloadJSON = MongoDBUtils.createPayloadJSON(request.payload);
   payloadJSON.date = Date.now();
-  logger.debug(payloadJSON);
   mongoDBUtils.save(new BloodLevelEntry(payloadJSON)).then(() => {
     reply().code(201);
   }, (err) => {
