@@ -5,16 +5,19 @@ const URI = process.env.MONGODB_URI || 'mongodb://internet_of_drinks:dr1nk_b33r@
 
 class MongoDBUtils {
   
-  static createModel(collection, model) {
-    return mongoose.model(collection, model);
+  constructor(collection) {
+    this.collection = collection;
+  }
+  
+  createModel(model) {
+    return mongoose.model(this.collection, model);
   }
   
   static createPayloadJSON(payload) {
-    console.log(payload);
     return JSON.parse(JSON.stringify(payload));
   }
   
-  static save(item) {
+  save(item) {
     mongoose.connect(URI);
     return new Promise((resolve, reject) => {
       item.save((err) => {

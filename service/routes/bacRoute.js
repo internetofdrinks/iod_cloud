@@ -14,10 +14,11 @@ const DB_MODEL = {
 const routeHandler = (request, reply) => {
   logger.debug(request.payload);
   const payloadJSON = MongoDBUtils.createPayloadJSON(request.payload);
+  const mongodbUtils = new MongoDBUtils(DB_COLLECTION);
   payloadJSON.date = Date.now();
   logger.debug(payloadJSON);
-  const BloodLevelEntry = MongoDBUtils.createModel(DB_COLLECTION, DB_MODEL);
-  MongoDBUtils.save(new BloodLevelEntry(payloadJSON)).then(() => {
+  const BloodLevelEntry = mongodbUtils.createModel(DB_COLLECTION, DB_MODEL);
+  mongodbUtils.save(new BloodLevelEntry(payloadJSON)).then(() => {
     reply().code(201);
   }, (err) => {
     reply(err).code(500);
