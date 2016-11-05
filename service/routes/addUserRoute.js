@@ -1,16 +1,10 @@
 const Route = require('./route');
 const MongoDBUtils = require('../utils/mongodbutils');
+const User = require('../schemas/user');
 
 const REST_METHOD = 'POST';
 const REST_PATH = '/users';
-const DB_COLLECTION = 'users';
-const mongoDBUtils = new MongoDBUtils(DB_COLLECTION);
-const User = mongoDBUtils.createModel(DB_COLLECTION, {
-  userid: String,
-  firstname: String,
-  lastname: String,
-  email: String
-});
+
 const options = {
   payload: {
     parse: true
@@ -20,7 +14,7 @@ const options = {
 const routeHandler = (request, reply) => {
   const payloadJSON = MongoDBUtils.createPayloadJSON(request.payload);
   payloadJSON.date = Date.now();
-  mongoDBUtils.save(new User(payloadJSON)).then(() => {
+  MongoDBUtils.save(new User(payloadJSON)).then(() => {
     reply(payloadJSON).code(201);
   }, (err) => {
     reply(err).code(500);
