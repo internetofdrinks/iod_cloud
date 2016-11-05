@@ -1,5 +1,5 @@
-const RATE_MEN = 0.2;
-const RATE_WOMEN = 0.1;
+const RATE_MALE = 0.15;
+const RATE_FEMALE = 0.1;
 const RATE_LEGAL = 0.3;
 
 class AlcoholUtils {
@@ -12,10 +12,11 @@ class AlcoholUtils {
       }
     }
     
-    const restHours = AlcoholUtils.calcRestHours();
+    const restHours = AlcoholUtils.calcRestHours(user.gender, bac.baclevel, hours);
     console.log(hours);
     console.log(restHours);
-    const sober = hours >= restHours;
+    const sober = parseFloat(hours) >= parseFloat(restHours);
+    console.log(sober);
     const returnValue = {
       "sober": sober,
     };
@@ -28,8 +29,14 @@ class AlcoholUtils {
     
   }
   
-  static calcRestHours() {
-    return 5;
+  static calcRestHours(gender, level, hours) {
+    let factor = RATE_MALE;
+    if (gender === 'female') {
+      factor = RATE_FEMALE;
+    }
+    // how many hours until sober
+    const timeToSober = (Math.round(((level - RATE_LEGAL) / factor)*2)/2).toFixed(1);
+    return timeToSober;
   }
 }
 

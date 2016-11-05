@@ -53,14 +53,10 @@ class MongoDBUtils {
   static findOne(item, query = {}, sort = { "date": "desc" }) {
     MongoDBUtils.login();
     return new Promise((resolve, reject) => {
-        console.log(query);
         item.findOne(query).sort(sort).exec((err, docs) => {
-          
           if (err) {
             reject(err);
           } else {
-            console.log("Found docs...");
-            console.log(docs);
             resolve(docs);
           }
         });
@@ -68,7 +64,7 @@ class MongoDBUtils {
     );
   }
   
-  static remove(item, query){
+  static remove(item, query) {
     MongoDBUtils.login();
     return new Promise((resolve, reject) => {
       item.remove(query, (err) => {
