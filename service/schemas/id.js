@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 
 const DB_COLLECTION = 'ids';
 const MODEL = {
-  userid: String,
+  userid: {
+    type: String,
+    required: true
+  },
   date: Date
 };
 
