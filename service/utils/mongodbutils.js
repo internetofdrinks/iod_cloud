@@ -24,26 +24,17 @@ class MongoDBUtils {
   
   static update(id, item, updateObject) {
     MongoDBUtils.login();
-    item.findOneAndUpdate({userid:id}, updateObject, { new: true }, function (err, result) {
-      if (err) {
+    return new Promise((resolve, reject) => {
+      item.findOneAndUpdate({"userid":id}, { $set: updateObject }, { new: true }, (err, newItem) => {
         console.log(err);
-      }
-      console.log("RESULT: " + result);
+        console.log(newItem);
+        if (err) {
+          reject(err);
+        } else {
+          resolve(newItem);
+        }
+      });
     });
-    /*return new Promise((resolve, reject) => {
-     console.log('running promise!');
-     item.findByIdAndUpdate(id, {$set:updateObject}, { new: true }, (err, newItem) => {
-     console.log(err);
-     console.log(newItem);
-     if (err) {
-     console.log('ERRRRR');
-     reject(err);
-     } else {
-     console.log("resolved...");
-     resolve(newItem);
-     }
-     });
-     });*/
   }
   
   static find(item, query = {}, sort = {}) {

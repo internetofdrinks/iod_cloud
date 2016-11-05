@@ -14,11 +14,9 @@ const options = {
 const routeHandler = (request, reply) => {
   const payloadJSON = MongoDBUtils.createPayloadJSON(request.payload);
   payloadJSON.date = Date.now();
-  MongoDBUtils.update(request.params.userid, new User(payloadJSON), payloadJSON).then((item) => {
-    console.log('cool. 201');
+  MongoDBUtils.update(request.params.userid, User, payloadJSON).then((item) => {
     reply(item).code(201);
   }, (err) => {
-    console.log('cool. 500');
     reply(err).code(500);
   });
 };
