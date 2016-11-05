@@ -37,10 +37,23 @@ class MongoDBUtils {
     });
   }
   
-  static find(item, query = {}, sort = {}) {
+  static find(item, query = {}, sort = {}, limit=0) {
     MongoDBUtils.login();
     return new Promise((resolve, reject) => {
-      item.find(query).sort(sort).exec((err, docs) => {
+      item.find(query).sort(sort).limit(limit).exec((err, docs) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(docs);
+        }
+      });
+    });
+  }
+  
+  static where(item, query = {}) {
+    MongoDBUtils.login();
+    return new Promise((resolve, reject) => {
+      item.where(query).exec((err, docs) => {
         if (err) {
           reject(err);
         } else {

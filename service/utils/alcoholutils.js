@@ -6,17 +6,14 @@ class AlcoholUtils {
   static calcRestAlc(user, bac, hours = 0) {
     // return if you're sober already
     if (bac.baclevel === 0) {
-      console.log("You're sober already!");
       return {
+        "sober": true,
         "timetosober": 0
       }
     }
     
     const restHours = AlcoholUtils.calcRestHours(user.gender, bac.baclevel, hours);
-    console.log(hours);
-    console.log(restHours);
     const sober = parseFloat(hours) >= parseFloat(restHours);
-    console.log(sober);
     const returnValue = {
       "sober": sober,
     };
@@ -35,7 +32,7 @@ class AlcoholUtils {
       factor = RATE_FEMALE;
     }
     // how many hours until sober
-    const timeToSober = (Math.round(((level - RATE_LEGAL) / factor)*2)/2).toFixed(1);
+    const timeToSober = (Math.round(((level - RATE_LEGAL) / factor) * 2) / 2).toFixed(1);
     return timeToSober;
   }
 }
