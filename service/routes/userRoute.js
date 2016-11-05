@@ -1,5 +1,4 @@
 const Route = require('./route');
-const logger = require('../utils/logger');
 const MongoDBUtils = require('../utils/mongodbutils');
 
 const REST_METHOD = 'POST';
