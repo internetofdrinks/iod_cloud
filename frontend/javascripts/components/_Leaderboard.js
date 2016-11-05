@@ -34,15 +34,25 @@ export default class Leaderboard extends React.Component {
   }
 
   render() {
-    var barData = _.filter(_.map(this.state.leaders, (leader, index) => {
-      return {
-        name: `${leader.firstname} ${leader.lastname}`,
-        values: [{
-          x: index + 1,
-          y: leader.baclevel
-        }]
-      };
-    }));
+    var barData = [
+      {
+        name: `Current Alcohol level`,
+        values: _.filter(_.map(this.state.leaders, (leader, index) => {
+          if(leader && leader.baclevel) {
+            return {
+              x: leader.firstname || leader.userid,
+              y: leader.baclevel
+            };
+          }
+        }))
+      }
+    ];
+
+    function colorForEntry(entry) {
+      // var index = _.findIndex(,  => );
+      var index = barData[0].values.indexOf(entry);
+      return ['#FF7F00', '#0566DC', '#00DD95', '#AE5600', '#023572'][index % 5];
+    }
 
     return (
       <div>
@@ -51,7 +61,8 @@ export default class Leaderboard extends React.Component {
           <BarChart data={barData}
                     width={986}
                     height={300}
-                    fill={'#3182bd'}
+                    fill={"#FF7F00"}
+                    colorAccessor={colorForEntry}
                     yAxisLabel='&permil;'/> : null
         }
       </div>
