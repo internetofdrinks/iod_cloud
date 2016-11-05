@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import UserStore from '../stores/_UserStore';
+import { browserHistory } from 'react-router';
 
 export default class UserForm extends React.Component {
   constructor(props) {
@@ -24,13 +25,13 @@ export default class UserForm extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    UserStore.saveUser(this.state.user);
+    UserStore.saveUser(this.state.user, () => browserHistory.push("/"), () => alert('Yeah, that sucks.'));
   }
 
   // ID Vorname Nachname Email
   render() {
     return (
-      <form className="mdl-grid shadow-container" onSubmit={this.onSubmit}>
+      <form className="mdl-grid shadow-container" onSubmit={this.onSubmit.bind(this)}>
         <div className="mdl-cell mdl-cell--12-col">
           <h3 className="heading--no-margin">New User</h3>
         </div>

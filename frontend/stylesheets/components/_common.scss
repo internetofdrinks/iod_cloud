@@ -3,3 +3,23 @@
   padding: 16px;
   background-color: white;
 }
+
+.list--unstyled {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: 0;
+  }
+}
+
+.list-table {
+  li > a {
+    display: block;
+    text-decoration: none !important;
+  }
+}
+
+.actions {
+  margin-top: 16px;
+}
