@@ -1,8 +1,11 @@
 import React from 'react';
 import _ from 'lodash';
+import moment from 'moment';
 import UserStore from '../stores/_UserStore';
 import TextField from './_Textfield';
 import RadioBox from './_RadioBox';
+import TimePicker from 'rc-time-picker';
+
 import { browserHistory } from 'react-router';
 
 export default class UserForm extends React.Component {
@@ -41,9 +44,21 @@ export default class UserForm extends React.Component {
       () => alert('Yeah, that sucks.'));
   }
 
+  onTimeChange(time) {
+    if(time && time.isBefore(moment())) {
+      time.add(1, 'days');
+    }
+    this.state.user.timegoal = time && time.unix();
+    this.setState({
+      user: this.state.user
+    });
+  }
+
   // ID Vorname Nachname Email
   render() {
     let user = this.state.user;
+
+    var timeGoal = this.state.user.timegoal ? moment.unix(this.state.user.timegoal) : moment().add(3, 'hours').startOf('hour');
 
     return (
       <form className="mdl-grid shadow-container" onSubmit={this.onSubmit.bind(this)}>
@@ -126,7 +141,16 @@ export default class UserForm extends React.Component {
           {(user.gametype == 'constant') ?
             <TextField subject={user} property="goal" onChange={this.updateUserState.bind(this, "goal")}>
               Alcohol level goal [&permil;]
-            </TextField> : null
+            </TextField> :
+            <div>
+              <label className="label">Time you want to be sober</label>
+              <div>
+                <TimePicker showSecond={false}
+                            style={{ width: 100 }}
+                            onChange={this.onTimeChange.bind(this)}
+                            value={timeGoal} />
+              </div>
+            </div>
           }
         </div>
 

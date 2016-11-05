@@ -59,7 +59,7 @@ export default class Leaderboard extends React.Component {
         <h2>Blood alcohol leaderboard</h2>
         {(barData.length > 0) ?
           <BarChart data={barData}
-                    width={986}
+                    width={952}
                     height={300}
                     fill={"#FF7F00"}
                     colorAccessor={colorForEntry}

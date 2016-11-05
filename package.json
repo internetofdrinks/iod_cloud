@@ -33,6 +33,7 @@
     "moment": "^2.15.2",
     "mongoose": "^4.6.6",
     "node-sass": "^3.11.1",
+    "rc-time-picker": "^2.1.0",
     "react": "^15.3.2",
     "react-d3": "^0.4.0",
     "react-dom": "^15.3.2",

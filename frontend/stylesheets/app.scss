@@ -6,6 +6,8 @@
 @import "material-design-lite/src/material-design-lite-grid";
 @import "material-design-lite/src/material-design-lite";
 
+@import 'rc-time-picker/assets/index';
+
 @import "base";
 @import "typography";
 @import "flex";
@@ -14,3 +16,5 @@
 @import "./components/common";
 @import "./components/header";
 @import "./components/layout";
+@import "./components/charts";
+@import "./components/user";
