@@ -18,6 +18,7 @@ const options = {
 
 const routeHandler = (request, reply) => {
   logger.debug(request.payload);
+  logger.debug(JSON.stringify(request.payload));
   const payloadJSON = MongoDBUtils.createPayloadJSON(request.payload);
   const mongodbUtils = new MongoDBUtils(DB_COLLECTION);
   payloadJSON.date = Date.now();
