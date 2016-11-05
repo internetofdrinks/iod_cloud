@@ -22,10 +22,10 @@ class MongoDBUtils {
     });
   }
   
-  static find(item) {
+  static find(item, query={}) {
     mongoose.connect(URI);
     return new Promise((resolve, reject) => {
-      item.find({}, (err, docs) => {
+      item.find({}).sort(query).exec((err, docs) => {
         console.log(docs);
         if (err) {
           reject(err);
@@ -33,6 +33,33 @@ class MongoDBUtils {
           mongoose.disconnect();
           resolve(docs);
         }
+      });
+    });
+  }
+  
+  static findOne(item, query={}) {
+    mongoose.connect(URI);
+    return new Promise((resolve, reject) => {
+      item.findOne({}).sort(query).exec((err, docs) => {
+        console.log(docs);
+        if (err) {
+          reject(err);
+        } else {
+          mongoose.disconnect();
+          resolve(docs);
+        }
+      });
+    });
+  }
+  
+  static drop(item) {
+    return new Promise((resolve, reject) => {
+      item.remove({}, (err) => {
+        console.log("remove doen...");
+        if (err) {
+          reject(err);
+        }
+        resolve();
       });
     });
   }
