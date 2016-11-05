@@ -7,7 +7,10 @@ const MODEL = {
     type: String,
     required: true
   },
-  baclevel: Number,
+  baclevel: {
+    type: Number,
+    required: true
+  },
   date: Date
 };
 
