@@ -1,9 +1,12 @@
-const BACRoute = require('./service/routes/bacRoute');
+const AddBACRoute = require('./service/routes/addBACRoute');
 const IndexRoute = require('./service/routes/indexRoute');
-const UserRoute = require('./service/routes/userRoute');
+const AddUserRoute = require('./service/routes/addUserRoute');
+
 const RestService = require('./service/restService');
 
-const routes = [BACRoute.getRoute(), IndexRoute.getRoute(), UserRoute.getRoute()];
+const routes = [IndexRoute.getRoute(),
+  AddBACRoute.getRoute(),
+  AddUserRoute.getRoute()];
 
 // start REST service
 const restService = new RestService(routes);

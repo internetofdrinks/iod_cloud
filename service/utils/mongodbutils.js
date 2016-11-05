@@ -5,13 +5,9 @@ const Schema = mongoose.Schema;
 const URI = process.env.MONGODB_URI || 'mongodb://internet_of_drinks:dr1nk_b33r@ds143777.mlab.com:43777/internetofdrinks';
 
 class MongoDBUtils {
-  
-  constructor(collection) {
-    this.collection = collection;
-  }
-  
-  createModel(model) {
-    return mongoose.model(this.collection, new Schema(model));
+
+  createModel(collection, model) {
+    return mongoose.model(collection, new Schema(model));
   }
   
   static createPayloadJSON(payload) {

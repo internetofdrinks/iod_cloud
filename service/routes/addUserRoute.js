@@ -2,10 +2,10 @@ const Route = require('./route');
 const MongoDBUtils = require('../utils/mongodbutils');
 
 const REST_METHOD = 'POST';
-const REST_PATH = '/user';
-const DB_COLLECTION = 'user';
+const REST_PATH = '/users';
+const DB_COLLECTION = 'users';
 const mongoDBUtils = new MongoDBUtils(DB_COLLECTION);
-const User = mongoDBUtils.createModel({
+const User = mongoDBUtils.createModel(DB_COLLECTION, {
   userid: String,
   firstname: String,
   lastname: String,
@@ -17,21 +17,20 @@ const options = {
   }
 };
 
-
 const routeHandler = (request, reply) => {
   const payloadJSON = MongoDBUtils.createPayloadJSON(request.payload);
   payloadJSON.date = Date.now();
   mongoDBUtils.save(new User(payloadJSON)).then(() => {
-    reply().code(201);
+    reply(payloadJSON).code(201);
   }, (err) => {
     reply(err).code(500);
   });
 };
 
-class BACRoute extends Route {
+class AddUserRoute extends Route {
   constructor() {
     super(REST_METHOD, REST_PATH, routeHandler, options);
   }
 }
 
-module.exports = new BACRoute();
+module.exports = new AddUserRoute();
