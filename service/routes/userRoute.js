@@ -8,21 +8,22 @@ const DB_COLLECTION = 'user';
 const DB_MODEL = {
   userid: String,
   firstname: String,
-  lastname: String
+  lastname: String,
+  email: String
 };
 
 const routeHandler = (request, reply) => {
-  logger.debug(request.payload);
   const payloadJSON = MongoDBUtils.createPayloadJSON(request.payload);
+  const mongodbUtils = new MongoDBUtils(DB_COLLECTION);
   payloadJSON.date = Date.now();
-  logger.debug(payloadJSON);
-  const BloodLevelEntry = MongoDBUtils.createModel(DB_COLLECTION, DB_MODEL);
-  MongoDBUtils.save(new BloodLevelEntry(payloadJSON)).then(() => {
+  const User = mongodbUtils.createModel(DB_MODEL);
+  mongodbUtils.save(new User(payloadJSON)).then(() => {
     reply().code(201);
   }, (err) => {
     reply(err).code(500);
   });
 };
+
 
 class BACRoute extends Route {
   constructor() {
