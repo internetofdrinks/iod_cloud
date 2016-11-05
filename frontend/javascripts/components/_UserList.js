@@ -12,10 +12,18 @@ export default class UserList extends React.Component {
     this.state = {
       users: UserStore.getUsers()
     };
+
+    this.updateState = this.updateState.bind(this);
   }
 
   componentDidMount() {
     Events.addListener(UserStore.CHANGE_EVENT, this.updateState);
+
+    componentHandler.upgradeDom();
+  }
+
+  componentDidUpdate() {
+    componentHandler.upgradeDom();
   }
 
   componentWillUnmount() {
@@ -35,8 +43,11 @@ export default class UserList extends React.Component {
         <ul className="list--unstyled list-table">
           {_.map(this.state.users, user =>
             <li key={user.userid}>
-              <Link to={"/frontend/users/" + user.userid + "/edit"}>
-                {user.firstname} {user.lastname}
+              <Link to={"/frontend/users/" + user.userid + "/edit"}
+                    className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fake">
+                <div>{user.firstname} {user.lastname}</div>
+                <div>{user.email}</div>
+                <div>{user.userid}</div>
               </Link>
             </li>
           )}

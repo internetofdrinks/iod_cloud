@@ -6,6 +6,7 @@ import Header from './_Header';
 
 import Dashboard from '../pages/_Dashboard';
 import NewUser from '../pages/_NewUser';
+import EditUser from '../pages/_EditUser';
 
 export default class Main extends React.Component {
   render() {
@@ -14,6 +15,7 @@ export default class Main extends React.Component {
         <Route component={Layout}>
           <Route path="/" components={{ content: Dashboard, header: Header }} />
           <Route path="/frontend/users/new" components={{ content: NewUser, header: Header }} />
+          <Route path="/frontend/users/:id/edit" components={{ content: EditUser, header: Header }} />
         </Route>
       </Router>
     );
