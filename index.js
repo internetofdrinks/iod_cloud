@@ -8,12 +8,12 @@ const FrontendRoute = require('./service/routes/frontendRoute');
 const PublicRouter = require('./service/routes/publicRoute');
 const RestService = require('./service/restService');
 const GetUsersRoute = require('./service/routes/getUsersRoute');
-const DeleteUserRoute = require('./service/routes/deleteAllUserRoute');
+const DeleteAllUsersRoute = require('./service/routes/deleteAllUserRoute');
 const UpdateUserRoute = require('./service/routes/updateUserRoute');
 const AddLatestIdRoute = require('./service/routes/addIdRoute');
 const GetLatestIdRoute = require('./service/routes/getLatestIdRoute');
 const GetUserRoute = require('./service/routes/getUserRoute');
-
+const DeleteUserRoute = require('./service/routes/deleteUserRoute');
 const AlcCalcRoute = require('./service/routes/addAlcCalcRoute');
 
 const routes = [AddBACRoute.getRoute(),
@@ -21,8 +21,7 @@ const routes = [AddBACRoute.getRoute(),
   FrontendRoute.getRoute(),
   PublicRouter.getRoute(),
   AddUserRoute.getRoute(),
-  DeleteUserRoute.getRoute(),
-  GetUsersRoute.getRoute(),
+  DeleteAllUsersRoute.getRoute(),
   GetLatestBACRoute.getRoute(),
   GetBACsPerUser.getRoute(),
   GetBACSRoute.getRoute(),
@@ -30,7 +29,9 @@ const routes = [AddBACRoute.getRoute(),
   AddLatestIdRoute.getRoute(),
   GetLatestIdRoute.getRoute(),
   AlcCalcRoute.getRoute(),
-  GetUserRoute.getRoute()];
+  GetUserRoute.getRoute(),
+  GetUsersRoute.getRoute(),
+  DeleteUserRoute.getRoute()];
 
 // start REST service
 const restService = new RestService(routes);

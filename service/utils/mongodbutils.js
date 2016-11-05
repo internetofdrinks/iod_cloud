@@ -68,8 +68,19 @@ class MongoDBUtils {
     );
   }
   
-  static
-  drop(item) {
+  static remove(item, query){
+    MongoDBUtils.login();
+    return new Promise((resolve, reject) => {
+      item.remove(query, (err) => {
+        if (err) {
+          reject(err);
+        }
+        resolve();
+      });
+    });
+  }
+  
+  static drop(item) {
     MongoDBUtils.login();
     return new Promise((resolve, reject) => {
       item.remove({}, (err) => {
