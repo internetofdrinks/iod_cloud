@@ -1,5 +1,4 @@
 const hapi = require('hapi');
-const Path = require('path');
 const Inert = require('inert');
 const logger = require('./utils/logger');
 
