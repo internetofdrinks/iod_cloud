@@ -15,10 +15,10 @@ const routeHandler = (request, reply) => {
   });
 };
 
-class DeleteAllRoute extends Route {
+class DeleteAllUsersRoute extends Route {
   constructor() {
     super(REST_METHOD, REST_PATH, routeHandler, {});
   }
 }
 
-module.exports = new DeleteAllRoute();
+module.exports = new DeleteAllUsersRoute();

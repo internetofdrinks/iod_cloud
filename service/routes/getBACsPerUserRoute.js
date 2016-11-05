@@ -4,12 +4,12 @@ const MongoDBUtils = require('../utils/mongodbutils');
 const BAC = require('../schemas/bac');
 
 const REST_METHOD = 'GET';
-const REST_PATH = '/bac/{id}';
+const REST_PATH = '/bac/{userid}';
 const options = {};
 
 const routeHandler = (request, reply) => {
-  console.log("Getting BAC for: "+request.params.id);
-  MongoDBUtils.find(BAC, { 'userid': request.params.id.toString() }).then((bacs) => {
+  console.log("Getting BAC for: "+request.params.userid);
+  MongoDBUtils.find(BAC, { 'userid': request.params.userid.toString() }).then((bacs) => {
     reply(bacs);
   }, (err) => {
     reply(err).code(500);

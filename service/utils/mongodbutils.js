@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const URI = process.env.MONGODB_URI || 'mongodb://internet_of_drinks:dr1nk_b33r@ds143777.mlab.com:43777/internetofdrinks';
+const URI = process.env.MONGODB_URI || 'mongodb://bauske.org:27017/internetofdrinks';
 
 class MongoDBUtils {
   
@@ -12,10 +12,10 @@ class MongoDBUtils {
     mongoose.connect(URI);
     return new Promise((resolve, reject) => {
       item.save((err) => {
+        mongoose.disconnect();
         if (err) {
           reject(err);
         } else {
-          mongoose.disconnect();
           resolve();
         }
       });
@@ -26,11 +26,10 @@ class MongoDBUtils {
     mongoose.connect(URI);
     return new Promise((resolve, reject) => {
       item.find(query).sort(sort).exec((err, docs) => {
-        console.log(docs);
+        mongoose.disconnect();
         if (err) {
           reject(err);
         } else {
-          mongoose.disconnect();
           resolve(docs);
         }
       });

@@ -1,5 +1,5 @@
 const AddBACRoute = require('./service/routes/addBACRoute');
-const GetBACRoute = require('./service/routes/getBACRoute');
+const GetBACSRoute = require('./service/routes/getBACSRoute');
 const GetLatestBACRoute = require('./service/routes/getLatestBACRoute');
 const GetBACsPerUser = require('./service/routes/getBACsPerUserRoute');
 
@@ -22,7 +22,7 @@ const routes = [AddBACRoute.getRoute(),
   GetUserRoute.getRoute(),
   GetLatestBACRoute.getRoute(),
   GetBACsPerUser.getRoute(),
-  GetBACRoute.getRoute()];
+  GetBACSRoute.getRoute()];
 
 // start REST service
 const restService = new RestService(routes);

@@ -15,10 +15,10 @@ const routeHandler = (request, reply) => {
   });
 };
 
-class AddBACRoute extends Route {
+class GetBACSRoute extends Route {
   constructor() {
     super(REST_METHOD, REST_PATH, routeHandler, options);
   }
 }
 
-module.exports = new AddBACRoute();
+module.exports = new GetBACSRoute();
