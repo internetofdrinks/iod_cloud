@@ -5,8 +5,8 @@
 NPM = node_modules
 BIN = $(NPM)/.bin
 SRC = frontend
-DIST = $(SRC)/dist
-PUB = public
+DIST = $(SRC)/public
+PUB = $(SRC)/public
 ENV = production
 
 # Static assets ----------------------------------------------------------------

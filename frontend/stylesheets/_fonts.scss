@@ -1,15 +1,15 @@
 @font-face {
   font-family: "Roboto";
   src: local("Roboto"),
-       url("/fonts/roboto/light/roboto_light.eot")
+       url("/public/fonts/roboto/light/roboto_light.eot")
          format("embedded-opentype"),
-       url("/fonts/roboto/light/roboto_light.woff")
+       url("/public/fonts/roboto/light/roboto_light.woff")
          format("woff"),
-       url("/fonts/roboto/light/roboto_light.woff2")
+       url("/public/fonts/roboto/light/roboto_light.woff2")
          format("woff2"),
-       url("/fonts/roboto/light/roboto_light.ttf")
+       url("/public/fonts/roboto/light/roboto_light.ttf")
          format("truetype"),
-       url("/fonts/roboto/light/roboto_light.svg")
+       url("/public/fonts/roboto/light/roboto_light.svg")
          format("svg");
 
   font-weight: 300;
@@ -18,15 +18,15 @@
 @font-face {
   font-family: "Roboto";
   src: local("Roboto"),
-       url("/fonts/roboto/regular/roboto_regular.eot")
+       url("/public/fonts/roboto/regular/roboto_regular.eot")
          format("embedded-opentype"),
-       url("/fonts/roboto/regular/roboto_regular.woff")
+       url("/public/fonts/roboto/regular/roboto_regular.woff")
          format("woff"),
-       url("/fonts/roboto/regular/roboto_regular.woff2")
+       url("/public/fonts/roboto/regular/roboto_regular.woff2")
          format("woff2"),
-       url("/fonts/roboto/regular/roboto_regular.ttf")
+       url("/public/fonts/roboto/regular/roboto_regular.ttf")
          format("truetype"),
-       url("/fonts/roboto/regular/roboto_regular.svg")
+       url("/public/fonts/roboto/regular/roboto_regular.svg")
          format("svg");
 
   font-weight: normal;
@@ -35,15 +35,15 @@
 @font-face {
   font-family: "Roboto";
   src: local("Roboto"),
-       url("/fonts/roboto/bold/roboto_bold.eot")
+       url("/public/fonts/roboto/bold/roboto_bold.eot")
          format("embedded-opentype"),
-       url("/fonts/roboto/bold/roboto_bold.woff")
+       url("/public/fonts/roboto/bold/roboto_bold.woff")
          format("woff"),
-       url("/fonts/roboto/bold/roboto_bold.woff2")
+       url("/public/fonts/roboto/bold/roboto_bold.woff2")
          format("woff2"),
-       url("/fonts/roboto/bold/roboto_bold.ttf")
+       url("/public/fonts/roboto/bold/roboto_bold.ttf")
          format("truetype"),
-       url("/fonts/roboto/bold/roboto_bold.svg")
+       url("/public/fonts/roboto/bold/roboto_bold.svg")
          format("svg");
 
   font-weight: bold;
@@ -52,15 +52,15 @@
 @font-face {
   font-family: "Material Icons";
   src: local("Material Icons"),
-       url("/fonts/material-design-icons/mdi_regular.eot")
+       url("/public/fonts/material-design-icons/mdi_regular.eot")
          format("embedded-opentype"),
-       url("/fonts/material-design-icons/mdi_regular.woff")
+       url("/public/fonts/material-design-icons/mdi_regular.woff")
          format("woff"),
-       url("/fonts/material-design-icons/mdi_regular.woff2")
+       url("/public/fonts/material-design-icons/mdi_regular.woff2")
          format("woff2"),
-       url("/fonts/material-design-icons/mdi_regular.ttf")
+       url("/public/fonts/material-design-icons/mdi_regular.ttf")
          format("truetype"),
-       url("/fonts/material-design-icons/mdi_regular.svg")
+       url("/public/fonts/material-design-icons/mdi_regular.svg")
          format("svg");
 
   font-weight: 400;
