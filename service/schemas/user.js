@@ -17,7 +17,8 @@ const MODEL = {
   height: Number,
   weight: Number,
   gametype: String,
-  goal: String
+  goal: String,
+  timegoal: String
 };
 
 const schema = new Schema(MODEL);
