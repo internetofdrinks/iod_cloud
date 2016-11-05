@@ -13,6 +13,7 @@ const DB_MODEL = {
 
 const routeHandler = (request, reply) => {
   const mongoDBUtils = new MongoDBUtils(DB_COLLECTION);
+  console.log(request.payload);
   const payloadJSON = mongoDBUtils.createPayloadJSON(request.payload)
   payloadJSON.date = Date.now();
   console.log(payloadJSON);
