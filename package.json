@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "postinstall": "make"
+    "start": "node index.js"/*,
+    "postinstall": "make"*/
   },
   "engines": {
     "node": "7.0.0",
