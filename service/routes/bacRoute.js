@@ -12,17 +12,16 @@ const DB_MODEL = {
 };
 
 const routeHandler = (request, reply) => {
-  const mongoDBUtils = new MongoDBUtils(DB_COLLECTION);
-  console.log(request.payload);
-  const payloadJSON = mongoDBUtils.createPayloadJSON(request.payload)
+  logger.debug(request.payload);
+  const payloadJSON = MongoDBUtils.createPayloadJSON(request.payload);
   payloadJSON.date = Date.now();
-  console.log(payloadJSON);
-  const BloodLevelEntry = mongoDBUtils.createModel(DB_MODEL);
-  mongoDBUtils.save(new BloodLevelEntry(payloadJSON)).then(()=> {
-    reply().code(201)
-  }, (err)=> {
-    reply(err).code(500)
-  })
+  logger.debug(payloadJSON);
+  const BloodLevelEntry = MongoDBUtils.createModel(DB_COLLECTION, DB_MODEL);
+  MongoDBUtils.save(new BloodLevelEntry(payloadJSON)).then(() => {
+    reply().code(201);
+  }, (err) => {
+    reply(err).code(500);
+  });
 };
 
 class BACRoute extends Route {
