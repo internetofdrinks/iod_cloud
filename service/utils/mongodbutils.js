@@ -10,6 +10,7 @@ class MongoDBUtils {
   }
   
   static createPayloadJSON(payload) {
+    console.log(payload);
     return JSON.parse(JSON.stringify(payload));
   }
   
