@@ -8,6 +8,7 @@ class MongoDBUtils {
     return JSON.parse(JSON.stringify(payload));
   }
   
+  
   static save(item) {
     mongoose.connect(URI);
     return new Promise((resolve, reject) => {
@@ -22,7 +23,22 @@ class MongoDBUtils {
     });
   }
   
-  static find(item, query={}, sort={}) {
+  static update(id, item) {
+    mongoose.connect(URI);
+    return new Promise((resolve, reject) => {
+      item.save((err) => {
+        mongoose.disconnect();
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+    });
+  }
+  
+  static find(item, query = {}, sort = {}) {
+    console.log(mongoose.connection.readyState);
     mongoose.connect(URI);
     return new Promise((resolve, reject) => {
       item.find(query).sort(sort).exec((err, docs) => {
@@ -36,7 +52,8 @@ class MongoDBUtils {
     });
   }
   
-  static findOne(item, query={}, sort={}) {
+  static findOne(item, query = {}, sort = {}) {
+    console.log(mongoose.connection.readyState);
     mongoose.connect(URI);
     return new Promise((resolve, reject) => {
       item.findOne(query).sort(sort).exec((err, docs) => {
@@ -51,9 +68,11 @@ class MongoDBUtils {
   }
   
   static drop(item) {
+    console.log(mongoose.connection.readyState);
+    mongoose.connect(URI);
     return new Promise((resolve, reject) => {
+      mongoose.disconnect();
       item.remove({}, (err) => {
-        console.log("remove doen...");
         if (err) {
           reject(err);
         }
