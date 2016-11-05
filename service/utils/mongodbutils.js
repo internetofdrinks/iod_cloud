@@ -25,7 +25,7 @@ class MongoDBUtils {
   static update(id, item, updateObject) {
     MongoDBUtils.login();
     return new Promise((resolve, reject) => {
-      item.findOneAndUpdate({"userid":id}, { $set: updateObject }, { new: true }, (err, newItem) => {
+      item.findOneAndUpdate({ "userid": id }, { $set: updateObject }, { new: true }, (err, newItem) => {
         console.log(err);
         console.log(newItem);
         if (err) {
@@ -50,20 +50,26 @@ class MongoDBUtils {
     });
   }
   
-  static findOne(item, query = {}, sort = {}) {
+  static findOne(item, query = {}, sort = { "date": "desc" }) {
     MongoDBUtils.login();
     return new Promise((resolve, reject) => {
-      item.findOne(query).sort(sort).exec((err, docs) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(docs);
-        }
-      });
-    });
+        console.log(query);
+        item.findOne(query).sort(sort).exec((err, docs) => {
+          
+          if (err) {
+            reject(err);
+          } else {
+            console.log("Found docs...");
+            console.log(docs);
+            resolve(docs);
+          }
+        });
+      }
+    );
   }
   
-  static drop(item) {
+  static
+  drop(item) {
     MongoDBUtils.login();
     return new Promise((resolve, reject) => {
       item.remove({}, (err) => {
@@ -75,7 +81,8 @@ class MongoDBUtils {
     });
   }
   
-  static login() {
+  static
+  login() {
     // only log in when not connected
     if (mongoose.connection.readyState === 0) {
       mongoose.connect(URI);

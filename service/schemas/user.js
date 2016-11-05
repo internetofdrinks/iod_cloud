@@ -13,6 +13,7 @@ const MODEL = {
   lastname: String,
   email: String,
   gender: String,
+  age: Number,
   height: Number,
   weight: Number,
   gametype: String,
