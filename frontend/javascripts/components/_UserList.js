@@ -39,11 +39,11 @@ export default class UserList extends React.Component {
   render() {
     return (
       <div>
-        <h1>All Users</h1>
+        <h2>All Users</h2>
         <ul className="list--unstyled list-table">
           {_.map(this.state.users, user =>
             <li key={user.userid}>
-              <Link to={"/frontend/users/" + user.userid + "/edit"}
+              <Link to={"/frontend/users/" + user.userid}
                     className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fake">
                 <div>{user.firstname} {user.lastname}</div>
                 <div>{user.email}</div>

@@ -32,7 +32,9 @@ export default class UserForm extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    UserStore.saveUser(this.state.user, () => browserHistory.push("/"), () => alert('Yeah, that sucks.'));
+    UserStore.saveUser(this.state.user,
+      () => browserHistory.push("/frontend/users/" + this.state.user.userid),
+      () => alert('Yeah, that sucks.'));
   }
 
   // ID Vorname Nachname Email

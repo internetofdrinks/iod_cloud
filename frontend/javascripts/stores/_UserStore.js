@@ -3,24 +3,16 @@ import _ from 'lodash';
 import Events from '../util/_EventEmitter';
 
 function UserStore() {
-  this.users = [];
   this.usersById = {};
   this.bacs = {};
-
-  $.ajax({
-    method: 'GET',
-    url: '/users',
-    success: users => {
-      this.users = users;
-      this.usersById = _.keyBy(users, 'userid');
-      Events.emit(this.CHANGE_EVENT);
-    }
-  });
+  this.leaders = [];
 
   this.CHANGE_EVENT = 'change';
 
   this.getUsers = function () {
-    return this.users;
+    var values = _.values(this.usersById);
+    values.sort((a, b) => a.firstname.localeCompare(b.firstname));
+    return values;
   };
 
   this.getUser = function(id) {
@@ -29,7 +21,41 @@ function UserStore() {
     }, this.usersById[id]);
   };
 
+  this.getLeaders = function() {
+    return this.leaders;
+  };
+
+  this.fetchUsers = function() {
+    $.ajax({
+      method: 'GET',
+      url: '/users',
+      success: users => {
+        this.usersById = _.keyBy(users, 'userid');
+        Events.emit(this.CHANGE_EVENT);
+      }
+    });
+
+    // BACs
+    $.ajax({
+      method: 'GET',
+      url: '/bac',
+      success: bacs => {
+        this.bacs = _.groupBy(bacs, 'userid');
+        Events.emit(this.CHANGE_EVENT);
+      }
+    });
+  };
+
   this.fetchUser = function(id) {
+    $.ajax({
+      method: 'GET',
+      url: '/users/' + id,
+      success: user => {
+        this.usersById[user.userid] = user;
+        Events.emit(this.CHANGE_EVENT);
+      }
+    });
+
     $.ajax({
       method: 'GET',
       url: '/bac/' + id,
@@ -40,16 +66,24 @@ function UserStore() {
     });
   };
 
-  this.saveUser = function (user, success, error) {
-    var oldId = user.userid;
-
+  this.fetchLeaders = function() {
     $.ajax({
-      method: 'POST',
+      method: 'GET',
+      url: '/alccalc/leader',
+      success: leaders => {
+        this.leaders = leaders;
+        Events.emit(this.CHANGE_EVENT);
+      }
+    });
+  };
+
+  this.saveUser = function (user, success, error) {
+    $.ajax({
+      method: user.isNew ? 'POST' : 'PUT',
       url: user.isNew ? '/users' : `/users/${user.userid}`,
+      contentType: 'application/json',
       data: JSON.stringify(user),
       success: user => {
-        _.remove(this.users, u => u.userid == oldId);
-        this.users.push(user);
         this.usersById[user.userid] = user;
         Events.emit(this.CHANGE_EVENT);
         if(success) success();
@@ -59,6 +93,20 @@ function UserStore() {
       }
     });
   };
+
+  this.deleteUser = function(id, success, error) {
+    $.ajax({
+      method: 'DELETE',
+      url: `/users/${id}`,
+      success: () => {
+        delete this.usersById[id];
+        if(success) success();
+      },
+      error: () => {
+        if(error) error();
+      }
+    });
+  }
 }
 
 export default new UserStore();
