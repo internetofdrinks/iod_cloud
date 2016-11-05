@@ -14,7 +14,8 @@ class MongoDBUtils {
   }
   
   static createPayloadJSON(payload) {
-    return JSON.parse(JSON.stringify(payload));
+    console.log(payload);
+    return JSON.parse(payload.toString());
   }
   
   save(item) {

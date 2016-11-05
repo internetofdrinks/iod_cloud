@@ -17,7 +17,7 @@ const routeHandler = (request, reply) => {
   const mongodbUtils = new MongoDBUtils(DB_COLLECTION);
   payloadJSON.date = Date.now();
   logger.debug(payloadJSON);
-  const BloodLevelEntry = mongodbUtils.createModel(DB_COLLECTION, DB_MODEL);
+  const BloodLevelEntry = mongodbUtils.createModel(DB_MODEL);
   mongodbUtils.save(new BloodLevelEntry(payloadJSON)).then(() => {
     reply().code(201);
   }, (err) => {
