@@ -5,7 +5,9 @@ export default class NewUser extends React.Component {
   render() {
     return (
       <div className="mdl-cell mdl-cell--12-col">
-        <UserForm user={{}} />
+        <UserForm user={{
+          isNew: true
+        }} />
       </div>
     );
   }

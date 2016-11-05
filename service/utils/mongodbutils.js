@@ -40,11 +40,10 @@ class MongoDBUtils {
     mongoose.connect(URI);
     return new Promise((resolve, reject) => {
       item.findOne(query).sort(sort).exec((err, docs) => {
-        console.log(docs);
+        mongoose.disconnect();
         if (err) {
           reject(err);
         } else {
-          mongoose.disconnect();
           resolve(docs);
         }
       });
