@@ -12,10 +12,12 @@ export default class UserList extends React.Component {
     this.state = {
       users: UserStore.getUsers()
     };
+
+    this.updateState = this.updateState.bind(this);
   }
 
   componentDidMount() {
-    Events.addListener(UserStore.CHANGE_EVENT, this.updateState.bind(this));
+    Events.addListener(UserStore.CHANGE_EVENT, this.updateState);
 
     componentHandler.upgradeDom();
   }
@@ -25,7 +27,7 @@ export default class UserList extends React.Component {
   }
 
   componentWillUnmount() {
-    Events.removeListener(UserStore.CHANGE_EVENT, this.updateState.bind(this));
+    Events.removeListener(UserStore.CHANGE_EVENT, this.updateState);
   }
 
   updateState() {

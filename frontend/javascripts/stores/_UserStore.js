@@ -4,6 +4,8 @@ import Events from '../util/_EventEmitter';
 
 function UserStore() {
   this.users = [];
+  this.usersById = {};
+  this.bacs = {};
 
   $.ajax({
     method: 'GET',
@@ -22,7 +24,9 @@ function UserStore() {
   };
 
   this.getUser = function(id) {
-    return this.usersById[id];
+    return _.assign({
+      bacs: this.bacs[id]
+    }, this.usersById[id]);
   };
 
   this.fetchUser = function(id) {
@@ -30,7 +34,7 @@ function UserStore() {
       method: 'GET',
       url: '/bac/' + id,
       success: bacs => {
-        this.usersById[id].bacs = bacs;
+        this.bacs[id] = bacs;
         Events.emit(this.CHANGE_EVENT);
       }
     });

@@ -23,10 +23,6 @@
     padding: 4px 8px;
     color: $color-text;
 
-    //&:hover {
-    //  background-color: #eee;
-    //}
-
     & > * {
       flex-grow: 1;
       flex-basis: 0;
@@ -36,4 +32,10 @@
 
 .actions {
   margin-top: 16px;
+}
+
+.radio-group {
+  .mdl-radio {
+    margin-right: 16px;
+  }
 }
