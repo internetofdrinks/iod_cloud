@@ -14,8 +14,11 @@ const options = {};
 const routeHandler = (request, reply) => {
   // get user and start calculation based on his data
   MongoDBUtils.findOne(User, { "userid": request.params.userid }).then((user) => {
+    console.log(user);
     MongoDBUtils.findOne(BAC, { "userid": request.params.userid }, { 'date': 'desc' }).then((bac) => {
+      console.log(bac)
       reply(AlcoholUtils.calcRestAlcNeeded(user, bac, request.params.hours));
+      
     }, (err) => {
       reply(err).code(500);
     });
