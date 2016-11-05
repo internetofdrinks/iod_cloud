@@ -58,6 +58,17 @@ export default class ShowUser extends React.Component {
       }
     ];
 
+    if(user.gametype == 'constant' && user.bacs && user.bacs.length >= 2) {
+      series.push({
+        name: 'Alcohol level goal',
+        strokeWidth: 2,
+        values: [
+          { x: new Date(user.bacs[0].date), y: user.goal },
+          { x: new Date(_.last(user.bacs).date), y: user.goal }
+        ]
+      });
+    }
+
     var valid = user.userid != null && series[0].values.length > 0;
 
     return (
@@ -67,13 +78,19 @@ export default class ShowUser extends React.Component {
           : null
         }
         {valid ?
-          <LineChart data={series}
+          <div>
+            <LineChart data={series}
                      height={300}
                      width={984}
-                     colors={() => '#FF7F00'}
+                     colors={i => i == 0 ? '#FF7F00' : '#0566DC'}
                      legend={false}
                      yAxisLabel="Blood alcohol level [&permil;]"
-                     title="Blood alcohol level history" /> :
+                     title="Blood alcohol level history" />
+            <p>Legend: &nbsp;
+              <span style={{color: '#FF7F00'}}>{user.firstname}'s alcohol level history</span> &nbsp;
+              <span style={{color: '#0566DC'}}>Alcohol level goal</span>
+            </p>
+          </div> :
           <p>No blood alcohol level entries. Get drunk, bro!</p>
         }
         <div className="actions">

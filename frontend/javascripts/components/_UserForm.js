@@ -17,6 +17,10 @@ export default class UserForm extends React.Component {
     componentHandler.upgradeDom();
   }
 
+  componentDidUpdate() {
+    componentHandler.upgradeDom();
+  }
+
   componentWillReceiveProps(nextProps) {
     this.setState({
       user: _.clone(nextProps.user)
@@ -97,12 +101,17 @@ export default class UserForm extends React.Component {
             </RadioBox>
           </div>
         </div>
+        <div className="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+          <TextField subject={user} property="age" onChange={this.updateUserState.bind(this, "age")}>
+            Age
+          </TextField>
+        </div>
 
         <div className="mdl-cell mdl-cell--12-col">
           <h5 className="heading--no-margin">Goals</h5>
         </div>
 
-        <div className="mdl-cell mdl-cell--12-col">
+        <div className="mdl-cell mdl-cell--6-col">
           <label className="label">Goal type</label>
           <div className="radio-group">
             <RadioBox subject={user} property={"gametype"} value="constant" onChange={this.updateUserState.bind(this, "gametype")}>
@@ -112,6 +121,13 @@ export default class UserForm extends React.Component {
               I want to be sober at ...
             </RadioBox>
           </div>
+        </div>
+        <div className="mdl-cell mdl-cell--6-col">
+          {(user.gametype == 'constant') ?
+            <TextField subject={user} property="goal" onChange={this.updateUserState.bind(this, "goal")}>
+              Alcohol level goal [&permil;]
+            </TextField> : null
+          }
         </div>
 
         <div className="mdl-cell mdl-cell--12-col">
