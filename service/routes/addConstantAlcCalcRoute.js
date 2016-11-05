@@ -18,7 +18,6 @@ const routeHandler = (request, reply) => {
     MongoDBUtils.findOne(BAC, { "userid": request.params.userid }, { 'date': 'desc' }).then((bac) => {
       console.log(bac)
       reply(AlcoholUtils.calcRestAlcNeeded(user, bac, request.params.hours));
-      
     }, (err) => {
       reply(err).code(500);
     });

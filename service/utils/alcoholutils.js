@@ -6,14 +6,6 @@ const GLAS_SIZE = 0.2;
 
 class AlcoholUtils {
   static calcRestAlc(user, bac, hours = 0) {
-    // return if you're sober already
-    if (bac.baclevel === 0) {
-      return {
-        "sober": true,
-        "timetosober": 0
-      }
-    }
-    
     const restHours = AlcoholUtils.calcRestHours(user.gender, bac.baclevel);
     const sober = parseFloat(hours) >= parseFloat(restHours);
     const returnValue = {
@@ -32,7 +24,10 @@ class AlcoholUtils {
     // target already achieved
     if (user.goal - bac.baclevel <= 0) {
       console.log('Goal reached already!');
-      return 0;
+      return {
+        amount_in_liter: 0,
+        amount_in_glasses: 0
+      }
     }
     
     let beerAmount = (parseFloat(user.goal) - parseFloat(bac.baclevel)) / promille;
