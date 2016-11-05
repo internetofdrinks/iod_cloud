@@ -8,7 +8,7 @@ const REST_PATH = '/users';
 const routeHandler = (request, reply) => {
   MongoDBUtils.drop(User).then(() => {
     console.log('deleted');
-    reply(true);
+    reply();
   }, (err) => {
     console.log('ERROR');
     reply(err).code(500);

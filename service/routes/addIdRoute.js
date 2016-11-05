@@ -1,9 +1,9 @@
 const Route = require('./route');
 const MongoDBUtils = require('../utils/mongodbutils');
-const User = require('../schemas/user');
+const Id = require('../schemas/id');
 
-const REST_METHOD = 'PUT';
-const REST_PATH = '/users/{userid}';
+const REST_METHOD = 'POST';
+const REST_PATH = '/ids';
 
 const options = {
   payload: {
@@ -14,19 +14,17 @@ const options = {
 const routeHandler = (request, reply) => {
   const payloadJSON = MongoDBUtils.createPayloadJSON(request.payload);
   payloadJSON.date = Date.now();
-  MongoDBUtils.update(request.params.userid, new User(payloadJSON), payloadJSON).then((item) => {
-    console.log('cool. 201');
-    reply(item).code(201);
+  MongoDBUtils.save(new Id(payloadJSON)).then(() => {
+    reply(payloadJSON).code(201);
   }, (err) => {
-    console.log('cool. 500');
     reply(err).code(500);
   });
 };
 
-class AddUserRoute extends Route {
+class AddIdRoute extends Route {
   constructor() {
     super(REST_METHOD, REST_PATH, routeHandler, options);
   }
 }
 
-module.exports = new AddUserRoute();
+module.exports = new AddIdRoute();

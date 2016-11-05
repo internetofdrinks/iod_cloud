@@ -22,17 +22,28 @@ class MongoDBUtils {
     });
   }
   
-  static update(id, item) {
+  static update(id, item, updateObject) {
     MongoDBUtils.login();
-    return new Promise((resolve, reject) => {
-      item.save((err) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve();
-        }
-      });
+    item.findOneAndUpdate({userid:id}, updateObject, { new: true }, function (err, result) {
+      if (err) {
+        console.log(err);
+      }
+      console.log("RESULT: " + result);
     });
+    /*return new Promise((resolve, reject) => {
+     console.log('running promise!');
+     item.findByIdAndUpdate(id, {$set:updateObject}, { new: true }, (err, newItem) => {
+     console.log(err);
+     console.log(newItem);
+     if (err) {
+     console.log('ERRRRR');
+     reject(err);
+     } else {
+     console.log("resolved...");
+     resolve(newItem);
+     }
+     });
+     });*/
   }
   
   static find(item, query = {}, sort = {}) {
@@ -62,7 +73,6 @@ class MongoDBUtils {
   }
   
   static drop(item) {
-    console.log(mongoose.connection.readyState);
     MongoDBUtils.login();
     return new Promise((resolve, reject) => {
       item.remove({}, (err) => {
@@ -75,11 +85,9 @@ class MongoDBUtils {
   }
   
   static login() {
+    // only log in when not connected
     if (mongoose.connection.readyState === 0) {
-      console.log('Do Login...');
       mongoose.connect(URI);
-    } else {
-      console.log('Will not login - since we\'re already logged in.');
     }
   }
 }
