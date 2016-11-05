@@ -22,10 +22,10 @@ class MongoDBUtils {
     });
   }
   
-  static find(item, query={}) {
+  static find(item, query={}, sort={}) {
     mongoose.connect(URI);
     return new Promise((resolve, reject) => {
-      item.find({}).sort(query).exec((err, docs) => {
+      item.find(query).sort(sort).exec((err, docs) => {
         console.log(docs);
         if (err) {
           reject(err);
@@ -37,10 +37,10 @@ class MongoDBUtils {
     });
   }
   
-  static findOne(item, query={}) {
+  static findOne(item, query={}, sort={}) {
     mongoose.connect(URI);
     return new Promise((resolve, reject) => {
-      item.findOne({}).sort(query).exec((err, docs) => {
+      item.findOne(query).sort(sort).exec((err, docs) => {
         console.log(docs);
         if (err) {
           reject(err);
