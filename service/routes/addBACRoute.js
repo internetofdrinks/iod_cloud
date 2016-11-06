@@ -14,7 +14,11 @@ const options = {
 
 const routeHandler = (request, reply) => {
   const payloadJSON = MongoDBUtils.createPayloadJSON(request.payload);
-  payloadJSON.date = Date.now();
+  console.log(request.payload);
+  if (payloadJSON.date === undefined) {
+    payloadJSON.date = Date.now();
+  }
+  
   MongoDBUtils.save(new BAC(payloadJSON)).then(() => {
     reply(payloadJSON).code(201);
   }, (err) => {
