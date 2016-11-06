@@ -21,7 +21,22 @@ const routeHandler = (request, reply) => {
     MongoDBUtils.createBulk(User, USERS_DUMP).then((data) => {
       MongoDBUtils.drop(BAC).then(() => {
         console.log('deleted BAC');
-        MongoDBUtils.createBulk(BAC, BAC_DUMP).then((data) => {
+        const newBacDataDump = [];
+        for (bacData of BAC_DUMP) {
+          console.log(bacData.userid);
+          let count = 5;
+          for (level of bacData.baclevel) {
+            const data = {}
+            data.userid = bacData.userid;
+            console.log(level);
+            data.baclevel = level;
+            data.date = Date.now() - (count-- * 3600000);
+            console.log(count+'/'+data.date);
+            newBacDataDump.push(data);
+          }
+          console.log(newBacDataDump);
+        }
+        MongoDBUtils.createBulk(BAC, newBacDataDump).then(() => {
           reply("RESET FINISHED!").code(201);
         }, (err) => {
           reply(err).code(500);

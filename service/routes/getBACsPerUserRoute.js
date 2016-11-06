@@ -9,7 +9,7 @@ const options = {};
 
 const routeHandler = (request, reply) => {
   console.log("Getting BAC for: "+request.params.userid);
-  MongoDBUtils.find(BAC, { 'userid': request.params.userid.toString() }).then((bacs) => {
+  MongoDBUtils.find(BAC, { 'userid': request.params.userid.toString() },{"date":"asc"}).then((bacs) => {
     reply(bacs);
   }, (err) => {
     reply(err).code(500);
