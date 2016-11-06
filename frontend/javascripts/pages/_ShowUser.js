@@ -179,7 +179,7 @@ export default class ShowUser extends React.Component {
                   <div>
                     <span className="good">Don't worry, you'll be sober in {formatHours(this.state.soberQuery.time_to_sober)} hours.
                       You can even drink up to {0.1} liters of beer and still make it!</span>
-                    <div className="glasses" style={{ width: 0.5 * 50 }}></div>
+                    <div className="glasses" style={{ width: 25 }}></div>
                   </div> :
                   <span className="bad">This won't work out, it'll take you {formatHours(this.state.soberQuery.time_to_sober)} hours to sober up!</span>
                 : null
