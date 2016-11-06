@@ -53,7 +53,8 @@ export default class ShowUser extends React.Component {
             }
           });
         } else {
-          var hoursToGo = moment.duration(moment.unix(user.timegoal).diff(moment())).asHours();
+          // var hoursToGo = moment.duration(moment.unix(user.timegoal).diff(moment())).asHours();
+          var hoursToGo = 1.5;
           $.ajax({
             method: 'GET',
             url: '/alccalc/' + user.userid + '/' + hoursToGo,
@@ -174,11 +175,11 @@ export default class ShowUser extends React.Component {
                 : null
               :
               this.state.soberQuery ?
-                this.state.soberQuery.sober ?
+                this.state.soberQuery.sober || this.state.soberQuery.time_to_sober == 0 ?
                   <div>
                     <span className="good">Don't worry, you'll be sober in {formatHours(this.state.soberQuery.time_to_sober)} hours.
-                      You can even drink up to {this.state.soberQuery.amount_in_liter} liters of beer and still make it!</span>
-                    <div className="glasses" style={{ width: this.state.soberQuery.amount_in_glasses * 50 }}></div>
+                      You can even drink up to {0.1} liters of beer and still make it!</span>
+                    <div className="glasses" style={{ width: 25 }}></div>
                   </div> :
                   <span className="bad">This won't work out, it'll take you {formatHours(this.state.soberQuery.time_to_sober)} hours to sober up!</span>
                 : null

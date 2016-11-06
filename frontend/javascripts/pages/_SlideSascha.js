@@ -7,7 +7,7 @@ export default class SlideSascha extends Slide {
     super(props);
 
     this.prevUrl = "/frontend/slides/martin";
-    this.nextUrl = "/";
+    this.nextUrl = "/frontend/slides";
   }
 
   render() {
