@@ -1,4 +1,9 @@
+@import "../colors";
+
 header {
+  background-color: #222222 !important;
+  border-bottom: 3px solid $color-foreground !important;
+
   h2 {
     font-size: 30px;
   }

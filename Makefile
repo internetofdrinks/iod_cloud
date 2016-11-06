@@ -23,6 +23,8 @@ BROWSERIFY_TARGET_FLAGS = \
 
 BROWSERIFY_LIBS = \
     material-design-lite \
+    rc-time-picker \
+    moment \
 	babel-polyfill \
 	jquery \
 	lodash \

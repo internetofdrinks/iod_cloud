@@ -1,0 +1,33 @@
+.rd3-legend-chart {
+  height: auto !important;
+
+  & > * {
+    display: flex !important;
+    flex-direction: column;
+
+    & > *:nth-child(1) {
+      height: 300px;
+    }
+
+    & > *:last-child {
+      width: auto !important;
+
+      ul {
+        display: flex;
+        list-style-position: outside !important;
+        margin-left: 32px;
+        margin-top: 0 !important;
+
+        li {
+          margin-right: 32px;
+        }
+        li:not(:first-child) {
+          margin-left: 16px;
+        }
+      }
+      * {
+        width: auto !important;
+      }
+    }
+  }
+}

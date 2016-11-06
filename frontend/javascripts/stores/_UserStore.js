@@ -12,7 +12,11 @@ function UserStore() {
   this.getUsers = function () {
     var values = _.values(this.usersById);
     values.sort((a, b) => a.firstname.localeCompare(b.firstname));
-    return values;
+    return _.map(values, user => {
+      return _.assign({
+        bacs: this.bacs[user.userid]
+      }, user);
+    });
   };
 
   this.getUser = function(id) {
