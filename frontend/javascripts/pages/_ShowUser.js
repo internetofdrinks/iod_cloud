@@ -44,7 +44,7 @@ export default class ShowUser extends React.Component {
         if (constant) {
           $.ajax({
             method: 'GET',
-            url: '/alccalc/constant/' + user.userid,
+            url: '/alccalc/' + user.userid,
             success: data => {
               this.goalQueried = true;
               this.setState({
@@ -56,7 +56,7 @@ export default class ShowUser extends React.Component {
           var hoursToGo = moment.duration(moment.unix(user.timegoal).diff(moment())).asHours();
           $.ajax({
             method: 'GET',
-            url: '/alccalc/sober/' + user.userid + '/' + hoursToGo,
+            url: '/alccalc/' + user.userid + '/' + hoursToGo,
             success: data => {
               this.goalQueried = true;
               this.setState({
@@ -117,12 +117,16 @@ export default class ShowUser extends React.Component {
         strokeDashArray: "5,5",
         values: [
           {x: new Date(_.last(user.bacs).date), y: _.last(user.bacs).baclevel },
-          {x: moment().add(this.state.soberQuery.timetosober, 'hours').toDate(), y: 0.3}
+          {x: moment().add(this.state.soberQuery.time_to_sober, 'hours').toDate(), y: 0.3}
         ]
       });
     }
 
     var valid = user.userid != null && series[0].values.length > 0;
+
+    function formatHours(hours) {
+      return moment().startOf('day').add(hours, 'hours').format('HH:mm');
+    }
 
     return (
       <div className="mdl-cell mdl-cell--12-col shadow-container">
@@ -163,13 +167,19 @@ export default class ShowUser extends React.Component {
                     <div className="good">Go ahead, drink {this.state.constantQuery.amount_in_liter} liters of beer to reach the perfect level!.</div>
                     <div className="glasses" style={{ width: this.state.constantQuery.amount_in_glasses * 50 }}></div>
                   </div> :
-                  <span className="bad">You're above the limit, relax a bit and check back later!</span>
+                  <span className="bad">You're above the limit, relax a bit and check back later! It'll take
+                    you {formatHours(this.state.constantQuery.time_to_sober)} hours to reach your level.
+                  </span>
                 : null
               :
               this.state.soberQuery ?
                 this.state.soberQuery.sober ?
-                  <span className="good">Don't worry, you'll be sober in {this.state.soberQuery.timetosober} hours.</span> :
-                  <span className="bad">This won't work out, it'll take you {this.state.soberQuery.timetosober} hours to sober up!</span>
+                  <div>
+                    <span className="good">Don't worry, you'll be sober in {formatHours(this.state.soberQuery.time_to_sober)} hours.
+                      You can even drink up to {this.state.soberQuery.amount_in_liter} liters of beer and still make it!</span>
+                    <div className="glasses" style={{ width: this.state.soberQuery.amount_in_glasses * 50 }}></div>
+                  </div> :
+                  <span className="bad">This won't work out, it'll take you {formatHours(this.state.soberQuery.time_to_sober)} hours to sober up!</span>
                 : null
             }
           </h4>
