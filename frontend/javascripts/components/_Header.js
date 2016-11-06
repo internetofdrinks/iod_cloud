@@ -20,6 +20,10 @@ export default class Header extends React.Component {
                   activeClassName="mdl-navigation__link--active">
               Users
             </Link>
+            <Link to="/frontend/slides" className="mdl-navigation__link"
+                  activeClassName="mdl-navigation__link--active">
+              Slides
+            </Link>
           </nav>
         </div>
       </header>
