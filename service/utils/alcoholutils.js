@@ -53,13 +53,13 @@ class AlcoholUtils {
     } else {
       // we can drink
       if (hoursLeft === 0) {
-        returnValue.sober = false;
+        returnValue.sober = true;
         returnValue.time_to_sober = 0;
         let liter = deltaPromille / beerPromille;
         returnValue.amount_in_liter = (liter / 10).toFixed(2);
         returnValue.amount_in_glasses = (liter / 10 / 0.2).toFixed(2);
       } else {
-        returnValue.sober = false;
+        returnValue.sober = true;
         returnValue.time_to_sober = 0;
         let possiblePromille = deltaPromille + hoursLeft * AlcoholUtils.getRate(user);
         returnValue.amount_in_liter = (possiblePromille/(beerPromille*10)).toFixed(2);
