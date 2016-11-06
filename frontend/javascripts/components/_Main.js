@@ -11,6 +11,8 @@ import ShowUser from '../pages/_ShowUser';
 import UserIndex from '../pages/_UserIndex';
 
 import SlideIntro from '../pages/_SlideIntro';
+import SlideMartin from '../pages/_SlideMartin';
+import SlideSascha from '../pages/_SlideSascha';
 import SlideOverview from '../pages/_SlideOverview';
 
 export default class Main extends React.Component {
@@ -25,6 +27,8 @@ export default class Main extends React.Component {
           <Route path="/frontend/users/:id/edit" components={{ content: EditUser, header: Header }} />
           <Route path="/frontend/slides" components={{ content: SlideIntro, header: Header, wide: "true", fullHeight: "true" }} />
           <Route path="/frontend/slides/overview" components={{ content: SlideOverview, header: Header, wide: "true", fullHeight: "true" }} />
+          <Route path="/frontend/slides/martin" components={{ content: SlideMartin, header: Header }} />
+          <Route path="/frontend/slides/sascha" components={{ content: SlideSascha, header: Header }} />
         </Route>
       </Router>
     );

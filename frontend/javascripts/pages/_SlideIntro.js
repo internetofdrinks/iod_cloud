@@ -20,7 +20,7 @@ export default class SlideIntro extends Slide {
       { add: ['logo.slide__bubble--intro-logo--ontop'] }
     ];
 
-    this.nextUrl = "/frontend/slides/overview";
+    this.nextUrl = "/";
   }
 
   render() {

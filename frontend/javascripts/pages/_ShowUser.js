@@ -110,16 +110,17 @@ export default class ShowUser extends React.Component {
         ]
       });
     } else if(user.gametype == 'sober' && user.bacs && user.bacs.length > 0 && user.timegoal && this.state.soberQuery) {
-      var time = moment.unix(user.timegoal);
-      series.push({
-        name: 'Alcohol level goal',
-        strokeWidth: 2,
-        strokeDashArray: "5,5",
-        values: [
-          {x: new Date(_.last(user.bacs).date), y: _.last(user.bacs).baclevel },
-          {x: moment().add(this.state.soberQuery.time_to_sober, 'hours').toDate(), y: 0.3}
-        ]
-      });
+      if(_.last(user.bacs).baclevel > 0.3) {
+        series.push({
+          name: 'Alcohol level goal',
+          strokeWidth: 2,
+          strokeDashArray: "5,5",
+          values: [
+            {x: new Date(_.last(user.bacs).date), y: _.last(user.bacs).baclevel },
+            {x: moment().add(this.state.soberQuery.time_to_sober, 'hours').toDate(), y: 0.3}
+          ]
+        });
+      }
     }
 
     var valid = user.userid != null && series[0].values.length > 0;
