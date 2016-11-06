@@ -30,7 +30,7 @@ const routeHandler = (request, reply) => {
             data.userid = bacData.userid;
             console.log(level);
             data.baclevel = level;
-            data.date = Date.now() - (count-- * 3600000);
+            data.date = Date.now() - (count-- * (Math.floor(Math.random() * 600000) + 3000000));
             console.log(count+'/'+data.date);
             newBacDataDump.push(data);
           }
