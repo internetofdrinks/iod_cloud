@@ -2,11 +2,15 @@ import React from 'react';
 
 import _ from 'lodash';
 
+import DbResetter from '../util/_DbResetter';
+
 import { browserHistory } from 'react-router';
 
 export default class Slide extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {};
 
     this.onKeyDown = this.onKeyDown.bind(this);
   }
@@ -20,7 +24,10 @@ export default class Slide extends React.Component {
   }
 
   next() {
-    var step = this.steps[this.state.nextStep];
+    var steps = this.steps || [];
+    var nextStep = this.state.nextStep || 0;
+
+    var step = steps[nextStep];
     if(step) {
       _.each(step.remove, rm => {
         var parts = rm.split('.');
@@ -41,7 +48,10 @@ export default class Slide extends React.Component {
   }
 
   prev() {
-    var step = this.steps[this.state.nextStep - 1];
+    var steps = this.steps || [];
+    var nextStep = this.state.nextStep || 0;
+
+    var step = steps[nextStep - 1];
     if(step) {
       _.each(step.add, rm => {
         var parts = rm.split('.');
@@ -81,8 +91,15 @@ export default class Slide extends React.Component {
 
       case 48:    // 0
         if(event.ctrlKey) {
-          console.log("Resetting DB ...");
+          console.log("Resetting BACs ...");
+          DbResetter.resetBacs();
         }
+        break;
+
+      case 49:    // 1
+        console.log("Adding martin's BAC");
+        DbResetter.submitMartinBac();
+        break;
     }
   }
 }

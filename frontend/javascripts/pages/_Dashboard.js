@@ -3,15 +3,20 @@ import UserList from '../components/_UserList';
 import Leaderboard from '../components/_Leaderboard';
 import History from '../components/_History';
 
+import Slide from '../components/_Slide';
+
 import UserStore from '../stores/_UserStore';
 import { Link } from 'react-router';
 
-export default class Dashboard extends React.Component {
+export default class Dashboard extends Slide {
   constructor(props) {
     super(props);
 
     UserStore.fetchUsers();
     UserStore.fetchLeaders();
+
+    this.prevUrl = "/frontend/slides";
+    this.nextUrl = "/frontend/slides/martin";
   }
 
   render() {
