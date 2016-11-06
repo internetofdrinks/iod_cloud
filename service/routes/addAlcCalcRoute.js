@@ -7,7 +7,7 @@ const BAC = require('../schemas/bac');
 const AlcoholUtils = require('../utils/alcoholutils');
 
 const REST_METHOD = 'GET';
-const REST_PATH = '/alccalc/sober/{userid}/{hours?}';
+const REST_PATH = '/alccalc/{userid}/{hours?}';
 
 const options = {};
 
@@ -24,10 +24,10 @@ const routeHandler = (request, reply) => {
   });
 };
 
-class AddSoberAlcCalcRoute extends Route {
+class AddConstantAlcCalcRoute extends Route {
   constructor() {
     super(REST_METHOD, REST_PATH, routeHandler, options);
   }
 }
 
-module.exports = new AddSoberAlcCalcRoute();
+module.exports = new AddConstantAlcCalcRoute();
