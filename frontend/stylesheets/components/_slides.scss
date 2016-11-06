@@ -56,21 +56,26 @@ $size-zoomed: 400px;
 .slide__arrow {
   $color: black;
 
-  height: 20px;
+  height: 40px;
   width: 200px;
-  background-color: $color;
+  display: flex;
+  flex-direction: row;
+
   position: absolute;
-  z-index: 5;
+  z-index: 4;
   opacity: 1;
 
   filter: drop-shadow(0 0 16px #666);
   transition: all 0.3s;
 
-  &:before, &:after {
-    content: '';
+  .slide__arrow__track {
+    background-color: $color;
+    height: 20px;
+    flex: 1;
+    align-self: center;
   }
 
-  &:before {
+  .slide__arrow__head:first-child {
     width: 0;
     height: 0;
     border-style: solid;
@@ -78,7 +83,7 @@ $size-zoomed: 400px;
     border-color: transparent $color transparent transparent;
   }
 
-  &:after {
+  .slide__arrow__head:last-child {
     width: 0;
     height: 0;
     border-style: solid;
@@ -89,7 +94,7 @@ $size-zoomed: 400px;
   &.slide__arrow--cloud-breathalyzer {
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate(90deg);
   }
 }
 

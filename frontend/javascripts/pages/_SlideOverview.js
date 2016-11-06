@@ -28,7 +28,11 @@ export default class SlideOverview extends Slide {
         <div className={this.state.cloud.join(' ')}>
           <img src="/public/images/IoD-cloud.png" />
         </div>
-        <div className={this.state.cloud_breathalyzer.join(' ')}></div>
+        <div className={this.state.cloud_breathalyzer.join(' ')}>
+          <div className="slide__arrow__head"></div>
+          <div className="slide__arrow__track"></div>
+          <div className="slide__arrow__head"></div>
+        </div>
       </div>
     );
   }
