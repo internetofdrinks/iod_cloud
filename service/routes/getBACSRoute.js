@@ -8,7 +8,7 @@ const REST_PATH = '/bac';
 const options = {};
 
 const routeHandler = (request, reply) => {
-  MongoDBUtils.find(BAC).then((bacs) => {
+  MongoDBUtils.find(BAC,{},{"date":"asc"}).then((bacs) => {
     reply(bacs);
   }, (err) => {
     reply(err).code(500);

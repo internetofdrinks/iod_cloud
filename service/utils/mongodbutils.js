@@ -8,6 +8,16 @@ class MongoDBUtils {
     return JSON.parse(JSON.stringify(payload));
   }
   
+  static createBulk(item, data) {
+    return new Promise((resolve, reject) => {
+      item.create(data, (err) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(data);
+      });
+    });
+  }
   
   static save(item) {
     MongoDBUtils.login();
@@ -37,7 +47,7 @@ class MongoDBUtils {
     });
   }
   
-  static find(item, query = {}, sort = {}, limit=0) {
+  static find(item, query = {}, sort = {}, limit = 0) {
     MongoDBUtils.login();
     return new Promise((resolve, reject) => {
       item.find(query).sort(sort).limit(limit).exec((err, docs) => {
