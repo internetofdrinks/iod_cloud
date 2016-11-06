@@ -1,13 +1,41 @@
 Welcome to the Internet of Drinks!
 
-<click> Drunk pic 1
+<click - Drunk pic 1>
 What do you think of this situation?
 
-<click> Drunk pic 2
+<click - Drunk pic 2>
 Or this?
 
-<click> Drunk pic 3
+<click - Drunk pic 3>
 Or this one?
 
 Would you like to avoid getting into such a condition? - Then you need our product!
 And actually, if you do plan to get drunk, you need our product as well, so join us in the Internet of Drinks!
+
+Vincent, Max, Sascha and Martin are best friends. At the moment, they are in a local (IoD-enabled ?) bar to have a drink (or two).
+There, they get in touch with their first IoD-device, a cloud-connected breathalyzer. Each of them has an RFID tag to
+identify themselves. <they show the tags. Martin starts to use the breathalyzer.> With this, Martin can measure his blood
+alcohol level, which is pushed to the cloud and associated with his account automatically. <Martin is done measuring>
+The beer'o'clock gives him direct feedback on his drunkenness status. <Beer'O'Clock moves>
+
+<click - Dashboard>
+In the online UI, he can check on his current and past alcohol level measurements. As you can see, all of them have
+been busy.
+<click - Martin's page>
+Martin takes a look at his personal beer record. For this evening, he set himself a target alcohol level of 1.5 per mille.
+The UI informs him that he needs another 1.5 l of beer to reach his goal. Therefore, he goes to the IoD Beer Dispenser
+and helps himself to a freshly drawn beer.
+
+Sascha, on the other hand, is the driver for the night. He needs to leave at 8 pm, for which he needs to be sober enough
+to drive safely. Sascha checks his profile:
+
+<click - Sascha's page>
+The helpful UI tells him that he is on plan and can even drink another 100 ml of beer and still be sober in time!
+Delighted by this fact, Sascha draws a fresh beer from the IoD Beer Dispenser.
+
+Advatages:
+- Other competitors only dispense hot or cold water, while we provide you with exactly the right amount of deliciously chilled beer.
+
+Use-Cases:
+- Automatic payment - even for half a beer
+- Car Rental security - Car2Go car won't open if you're too drunk
