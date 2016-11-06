@@ -35,8 +35,49 @@ $size-zoomed: 400px;
 
   &.slide__bubble--breathalyzer:not(.slide__bubble--centered) {
     left: 50%;
-    top: 100%;
+    top: 95%;
     transform: translate(-50%, -100%);
+  }
+
+  &.slide__bubble--beer-dispenser:not(.slide__bubble--centered) {
+    left: 100%;
+    top: 5%;
+    transform: translate(-100%, 0);
+  }
+
+  &.slide__bubble--drunk-pic1 {
+    width: 40%;
+    bottom: 0;
+    top: 0;
+    height: auto;
+    left: 2.5%;
+  }
+
+  &.slide__bubble--drunk-pic2 {
+    height: 50%;
+    top: 0;
+    right: 2.5%;
+    width: 50%
+  }
+
+  &.slide__bubble--drunk-pic3 {
+    height: 60%;
+    top: auto;
+    bottom: 0;
+    right: 2.5%;
+    width: 60%
+  }
+
+  &.slide__bubble--intro-logo {
+    width: 500px;
+    height: 500px;
+    filter: drop-shadow(0 0 19px white);
+  }
+
+  &.slide__bubble--intro-logo--ontop {
+    z-index: 10;
+    width: 600px;
+    height: 600px;
   }
 
   img {
@@ -47,10 +88,17 @@ $size-zoomed: 400px;
 
 .slide__stamp {
   position: absolute;
-  color: red;
+  color: black;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) rotate(-20deg);
+  top: 100%;
+  transform: translate(-50%, -100%);
+  font-weight: bold;
+  text-align: center;
+
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  padding: 0 8px;
+  margin: 0;
 }
 
 .slide__arrow {
@@ -95,6 +143,12 @@ $size-zoomed: 400px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  &.slide__arrow--cloud-beer-dispenser {
+    left: 70%;
+    top: 20%;
+    transform: translate(-50%, -50%) rotate(8deg);
   }
 }
 

@@ -2,6 +2,8 @@ import React from 'react';
 
 import _ from 'lodash';
 
+import { browserHistory } from 'react-router';
+
 export default class Slide extends React.Component {
   constructor(props) {
     super(props);
@@ -33,6 +35,8 @@ export default class Slide extends React.Component {
       this.setState({
         nextStep: this.state.nextStep + 1
       });
+    } else if(this.nextUrl) {
+      browserHistory.push(this.nextUrl);
     }
   }
 
@@ -52,6 +56,8 @@ export default class Slide extends React.Component {
       this.setState({
         nextStep: this.state.nextStep - 1
       });
+    } else if(this.prevUrl) {
+      browserHistory.push(this.prevUrl);
     }
   }
 
@@ -72,6 +78,11 @@ export default class Slide extends React.Component {
         event.stopImmediatePropagation();
         this.next();
         break;
+
+      case 48:    // 0
+        if(event.ctrlKey) {
+          console.log("Resetting DB ...");
+        }
     }
   }
 }

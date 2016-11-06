@@ -164,7 +164,7 @@ export default class ShowUser extends React.Component {
               this.state.constantQuery ?
                 this.state.constantQuery.amount_in_liter > 0 ?
                   <div>
-                    <div className="good">Go ahead, drink {this.state.constantQuery.amount_in_liter} liters of beer to reach the perfect level!.</div>
+                    <div className="good">Go ahead, drink {this.state.constantQuery.amount_in_liter} liters of beer to reach the perfect level!</div>
                     <div className="glasses" style={{ width: this.state.constantQuery.amount_in_glasses * 50 }}></div>
                   </div> :
                   <span className="bad">You're above the limit, relax a bit and check back later! It'll take
